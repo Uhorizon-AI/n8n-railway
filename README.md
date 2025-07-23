@@ -26,6 +26,9 @@ DB_POSTGRESDB_PASSWORD=...
 DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 ```
 
+> ❗ Nota: No definas `startCommand` en `railway.toml` si estás usando la imagen oficial de Docker de `n8n`.
+> Esta imagen ya define su propio `CMD`, y sobreescribirlo causará errores como `Command "start" not found`.
+
 > ℹ️ Sustituye `<tu-dominio>` y los datos de PostgreSQL con los que te da Railway.
 
 > ⚠️ Nota: Se ha cambiado el `healthcheckPath` por defecto para evitar errores al acceder a `/healthz`.
