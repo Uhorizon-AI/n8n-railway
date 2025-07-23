@@ -25,5 +25,5 @@ EXPOSE 5678
 #CMD ["node", "/usr/local/lib/node_modules/n8n/bin/n8n"]
 #CMD ["/bin/sh", "-c", "./packages/cli/bin/n8n"]
 
-ENTRYPOINT []  # ← Borra el entrypoint existente
-CMD ["./packages/cli/bin/n8n"]  # ← Ejecuta n8n directamente
+# Ejecutar n8n directamente sin entrypoint
+CMD ["/bin/sh", "-c", "./packages/cli/bin/n8n"]
