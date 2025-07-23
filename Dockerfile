@@ -25,6 +25,3 @@ EXPOSE 5678
 #CMD ["n8n"]
 #CMD ["node", "/usr/local/lib/node_modules/n8n/bin/n8n"]
 #CMD ["/bin/sh", "-c", "./packages/cli/bin/n8n"]
-
-# Ejecutar n8n directamente sin entrypoint
-CMD ["/bin/sh", "-c", "./packages/cli/bin/n8n"]
