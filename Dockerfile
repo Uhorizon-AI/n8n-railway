@@ -21,4 +21,4 @@ EXPOSE 5678
 # USER node
 
 # Comando de inicio correcto para n8n
-CMD ["n8n"]
+CMD ["node", "/usr/local/lib/node_modules/n8n/bin/n8n"]
