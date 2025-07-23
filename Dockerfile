@@ -1,9 +1,14 @@
 FROM docker.n8n.io/n8nio/n8n:1.102.3
 
-# Set Node.js heap size to 90% of available memory for n8n, reserving 10% for Docker
-# ENV NODE_OPTIONS="--max-old-space-size=460"
+# Usamos una imagen oficial de n8n con versión específica para mayor estabilidad
+FROM docker.n8n.io/n8nio/n8n:1.102.3
 
-# Crypto for Zoho SalesIQ Security
+# Configuración general de Node.js
+ENV NODE_ENV=production \
+    NODE_VERSION=22.14.0
+
+# Permitir el uso del módulo 'crypto' en funciones personalizadas (por ejemplo, para Zoho SalesIQ)
 ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
 
-# No additional configuration needed, using the official image directly
+# No se requiere configuración adicional: n8n se iniciará con la configuración por defecto,
+# la cual puede ser modificada mediante variables de entorno definidas en Railway.
