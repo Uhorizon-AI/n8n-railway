@@ -26,11 +26,11 @@ DB_POSTGRESDB_PASSWORD=...
 DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 ```
 
-> ✅ Esta configuración ha sido validada como funcional en Railway con la imagen oficial de `n8n`.
-> Se eliminó el `healthcheckPath` en `railway.toml` para evitar falsos errores durante el arranque.
+> ✅ Esta configuración ha sido validada como funcional en Railway con la imagen oficial de `n8n`.  
+> Se reactivó el `healthcheckPath` en `railway.toml` con la ruta `/`, ya que fue validado exitosamente en producción sin provocar errores de arranque.  
 > No es necesario definir `startCommand`, ya que el `CMD` está embebido correctamente en la imagen base oficial.
 
-> ❗ Nota: No definas `startCommand` en `railway.toml` si estás usando la imagen oficial de Docker de `n8n`.
+> ❗ Nota: No definas `startCommand` en `railway.toml` si estás usando la imagen oficial de Docker de `n8n`.  
 > Esta imagen ya define su propio `CMD` embebido correctamente, y sobreescribirlo causará errores como `Command "start" not found`.
 
 > ℹ️ Sustituye `<tu-dominio>` y los datos de PostgreSQL con los que te da Railway.
