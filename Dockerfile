@@ -1,5 +1,3 @@
-FROM docker.n8n.io/n8nio/n8n:1.102.3
-
 # Usamos una imagen oficial de n8n con versión específica para mayor estabilidad
 FROM docker.n8n.io/n8nio/n8n:1.102.3
 
