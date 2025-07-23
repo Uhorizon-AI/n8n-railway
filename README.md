@@ -1,5 +1,3 @@
-
-
 # n8n on Railway
 
 Este repositorio permite desplegar una instancia de [n8n](https://n8n.io/) en Railway usando Docker.
@@ -15,7 +13,7 @@ Este repositorio permite desplegar una instancia de [n8n](https://n8n.io/) en Ra
 # Básicas
 N8N_HOST=0.0.0.0
 N8N_PORT=5678
-N8N_PROTOCOL=http
+N8N_PROTOCOL=https
 N8N_EDITOR_BASE_URL=https://<tu-dominio>.up.railway.app
 
 # Base de datos (opcional pero recomendado)
@@ -30,11 +28,14 @@ DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 
 > ℹ️ Sustituye `<tu-dominio>` y los datos de PostgreSQL con los que te da Railway.
 
+> ⚠️ Nota: Se ha cambiado el `healthcheckPath` por defecto para evitar errores al acceder a `/healthz`.
+
 ## 🧪 Variables adicionales (opcional)
 
 - `N8N_EXECUTIONS_MODE=queue`
 - `N8N_RUNNERS_ENABLED=...`
-- `NODE_ENV=production`
+
+> 🔧 `NODE_ENV=production` ya está definido en el `Dockerfile` para evitar confusiones.
 
 ## 📦 Persistencia
 
