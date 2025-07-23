@@ -5,8 +5,20 @@ FROM docker.n8n.io/n8nio/n8n:1.102.3
 ENV NODE_ENV=production \
     NODE_VERSION=22.14.0
 
-# Permitir el uso del módulo 'crypto' en funciones personalizadas (por ejemplo, para Zoho SalesIQ)
+# Permitir el uso del módulo 'crypto' en funciones personalizadas
 ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
 
-# No se requiere configuración adicional: n8n se iniciará con la configuración por defecto,
-# la cual puede ser modificada mediante variables de entorno definidas en Railway.
+# Configuración específica para Railway
+ENV N8N_HOST=0.0.0.0
+ENV N8N_PORT=5678
+
+# Exponer el puerto
+EXPOSE 5678
+
+# Crear directorio de datos si no existe y configurar permisos
+# USER root
+# RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
+# USER node
+
+# Comando de inicio correcto para n8n
+CMD ["n8n"]
