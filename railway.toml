@@ -5,7 +5,7 @@ dockerfile = "Dockerfile"
 healthcheckPath = "/"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
-startCommand = ["n8n", "start"]
+startCommand = "n8n start"
 
 [service]
 name = "n8n"
