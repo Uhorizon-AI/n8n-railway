@@ -20,5 +20,5 @@ USER root
 RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
 USER node
 
-# IMPORTANTE: Con volumen, necesitamos especificar el comando explícito
-CMD ["node", "/usr/local/lib/node_modules/n8n/dist/index.js"]
+# IMPORTANTE: Con volumen, usar el script de inicio completo
+CMD ["/usr/local/bin/docker-entrypoint.sh", "n8n"]
