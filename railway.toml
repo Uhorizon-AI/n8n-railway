@@ -1,15 +1,15 @@
 [build]
-  dockerfile = "Dockerfile"
+dockerfile = "Dockerfile"
 
 [deploy]
-  healthcheckPath = "/"
-  healthcheckTimeout = 300
-  restartPolicyType = "ON_FAILURE"
+healthcheckPath = "/"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+command = ["n8n", "start"]
 
 [service]
-  name = "n8n"
-  internal_port = 5678
-  disk = [
-    { mountPath = "/home/node/.n8n", sizeGB = 1 }
-  ]
-  startCommand = ["n8n", "start"]
+name = "n8n"
+internal_port = 5678
+disk = [
+  { mountPath = "/home/node/.n8n", sizeGB = 1 }
+]
