@@ -5,7 +5,7 @@
   healthcheckPath = "/"
   healthcheckTimeout = 300
   restartPolicyType = "ON_FAILURE"
-  command = "n8n start"    # <--- STRING literal y campo 'command' usado en [deploy]
+  command = "n8n start"
 
 [service]
   name = "n8n"
