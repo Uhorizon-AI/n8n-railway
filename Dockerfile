@@ -6,3 +6,5 @@ ENV NODE_ENV=production \
     N8N_PORT=5678
 
 EXPOSE 5678
+
+USER root
