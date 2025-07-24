@@ -41,11 +41,29 @@ N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 
 A persistent volume should be mounted at `/home/node/.n8n` to ensure data is preserved between deployments. The size of the volume depends on your specific needs.
 
+
 ## 📥 Import Workflows
 
 To migrate workflows from another `n8n` instance:  
 1. Export the workflows as `.json` files from the UI.  
 2. Import them into the new instance also through the `n8n` UI.
+
+## 🗄️ PostgreSQL Configuration (optional)
+
+If you prefer using PostgreSQL instead of the default SQLite setup, add the following environment variables to your Railway project:
+
+```env
+DB_TYPE=postgresdb
+DB_POSTGRESDB_HOST=your-postgres-host
+DB_POSTGRESDB_PORT=5432
+DB_POSTGRESDB_DATABASE=n8n
+DB_POSTGRESDB_USER=your-db-user
+DB_POSTGRESDB_PASSWORD=your-db-password
+```
+
+> 🔐 Make sure your PostgreSQL instance is properly secured and accessible from your Railway deployment.
+
+> 🗑️ If you're using PostgreSQL, you can skip mounting the volume at `/home/node/.n8n`, as database persistence will be handled by your PostgreSQL instance.
 
 ## 🛠 Credits
 
