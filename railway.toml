@@ -14,6 +14,7 @@
   disk = [
     { mountPath = "/home/node/.n8n", sizeGB = 1 }
   ]
+  startCommand = ["n8n"]
 
 #  Variables esenciales que debes definir en Railway UI o en Secrets
 #  N8N_EDITOR_BASE_URL = ""
