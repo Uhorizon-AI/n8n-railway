@@ -26,6 +26,9 @@ DB_POSTGRESDB_PASSWORD=...
 DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 ```
 
+> ⚠️ No todas las variables de entorno son obligatorias si se está usando SQLite temporalmente.  
+> ℹ️ Las variables `NODE_VERSION=22.14.0` y `NODE_ENV=production` ya están definidas en el `Dockerfile`.
+
 > ✅ Esta configuración ha sido validada como funcional en Railway con la imagen oficial de `n8n`.  
 > Se reactivó el `healthcheckPath` en `railway.toml` con la ruta `/`, ya que fue validado exitosamente en producción sin provocar errores de arranque.  
 > No es necesario definir `startCommand`, ya que el `CMD` está embebido correctamente en la imagen base oficial.
@@ -35,7 +38,7 @@ DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 
 > ℹ️ Sustituye `<tu-dominio>` y los datos de PostgreSQL con los que te da Railway.
 
-> ⚠️ Nota: Se ha eliminado el `healthcheckPath` para evitar errores de verificación durante el arranque.
+> ✅ Se reactivó el `healthcheckPath = "/"` en `railway.toml` tras pruebas exitosas en producción.
 
 ## 🧪 Variables adicionales (opcional)
 
@@ -46,7 +49,7 @@ DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
 
 ## 📦 Persistencia
 
-Si no usas PostgreSQL, asegúrate de montar un volumen persistente en `/home/node/.n8n`.
+Se está usando un volumen de 1 GB montado en `/home/node/.n8n`, lo que garantiza que los datos se conserven entre despliegues.
 
 ## 📥 Importar Workflows
 

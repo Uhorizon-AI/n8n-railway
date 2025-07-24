@@ -10,3 +10,15 @@
 [service]
   name = "n8n"
   internal_port = 5678
+
+#  Variables esenciales que debes definir en Railway UI o en Secrets
+#  N8N_EDITOR_BASE_URL = ""
+#  N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true"
+#  N8N_EXECUTIONS_MODE = "queue"
+#  N8N_HOST = "0.0.0.0"
+#  N8N_PORT = "5678"
+#  N8N_PROTOCOL = "https"
+#  N8N_RUNNERS_ENABLED = "true"
+#  N8N_USER_FOLDER = "/home/node/.n8n"
+#  NODE_ENV = "production"
+#  NODE_VERSION = "22.14.0"
