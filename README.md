@@ -11,12 +11,16 @@ This repository allows you to deploy an instance of [n8n](https://n8n.io/) on Ra
 
 ```env
 # Basic
-N8N_PROTOCOL=https
 N8N_EDITOR_BASE_URL=https://<your-domain>.up.railway.app
+N8N_PROTOCOL=https
+PORT=5678
+N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 ```
 
+
 > ⚠️ Not all environment variables are mandatory if using SQLite temporarily.  
-> ℹ️ The variables `NODE_VERSION=22.14.0` and `NODE_ENV=production` are already defined in the `Dockerfile`.
+> ℹ️ The variables `NODE_VERSION=22.14.0` and `NODE_ENV=production` are already defined in the `Dockerfile`.  
+> 🔐 `N8N_ENCRYPTION_KEY` is required if you want to migrate credentials between instances.
 
 > ✅ This configuration has been validated as functional on Railway with the official `n8n` image.  
 > The `healthcheckPath` in `railway.toml` was re-enabled with the path `/`, as it was successfully validated in production without causing startup errors.  
