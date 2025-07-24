@@ -22,3 +22,18 @@ EXPOSE 5678
 
 # Required for Railway disk/volume mounting
 USER root
+
+# Set working directory
+WORKDIR /home/node
+
+# Copy custom files if needed (e.g., settings, credentials)
+# COPY ./local_files /home/node/.n8n
+
+# Ensure proper file permissions
+RUN chown -R node:node /home/node
+
+# Use non-root user to run the app
+USER node
+
+# Start the n8n service
+CMD ["n8n"]

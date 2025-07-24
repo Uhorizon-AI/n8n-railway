@@ -39,7 +39,7 @@ N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 
 ## 📦 Persistence
 
-A 1 GB volume mounted at `/home/node/.n8n` is used to ensure data is preserved between deployments.
+A persistent volume should be mounted at `/home/node/.n8n` to ensure data is preserved between deployments. The size of the volume depends on your specific needs.
 
 ## 📥 Import Workflows
 
