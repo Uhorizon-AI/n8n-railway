@@ -5,11 +5,11 @@
   healthcheckPath = "/"
   healthcheckTimeout = 300
   restartPolicyType = "ON_FAILURE"
-  command = "n8n start"
+  command = "n8n start"  # OBLIGATORIO como cadena de texto literal, no arreglo ni lista
 
 [service]
   name = "n8n"
   internal_port = 5678
   disk = [
-    { mountPath = "/home/node/n8n-data", sizeGB = 1 }
+    { mountPath = "/home/node/.n8n", sizeGB = 1 }
   ]
