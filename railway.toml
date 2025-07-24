@@ -8,6 +8,13 @@
   healthcheckTimeout = 300
   restartPolicyType = "ON_FAILURE"
 
+[service]
+  name = "n8n"
+  internal_port = 5678
+  disk = [
+    { mountPath = "/home/node/.n8n", sizeGB = 1 }
+  ]
+
 #  Variables esenciales que debes definir en Railway UI o en Secrets
 #  N8N_EDITOR_BASE_URL = ""
 #  N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS = "true"
