@@ -16,9 +16,9 @@ ENV N8N_PORT=5678
 EXPOSE 5678
 
 # Crear directorio y configurar permisos para el volumen
-USER root
-RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
-USER node
+#USER root
+#RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
+#USER node
 
 # IMPORTANTE: Con volumen, usar el script de inicio completo
-CMD ["/usr/local/bin/docker-entrypoint.sh", "n8n"]
+#CMD ["/usr/local/bin/docker-entrypoint.sh", "n8n"]
