@@ -1,19 +1,24 @@
-# Usamos una imagen oficial de n8n con versión específica para mayor estabilidad
+# Use an official n8n image with a specific version for stability
 FROM docker.n8n.io/n8nio/n8n:1.102.3
 
-# Configuración general de Node.js
+# General Node.js configuration
 ENV NODE_ENV=production \
     NODE_VERSION=22.14.0
 
-
+# Allow crypto module for Zoho SalesIQ Security
 ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
 
-# Configuración específica para Railway
+# Recommended additional environment variables
+ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
+    N8N_EXECUTIONS_MODE=queue \
+    N8N_RUNNERS_ENABLED=true
+
+# Railway-specific configuration
 ENV N8N_HOST=0.0.0.0
 ENV N8N_PORT=5678
 
-# Exponer el puerto
+# Expose the port
 EXPOSE 5678
 
-# Requerido para el disk/volume
+# Required for Railway disk/volume mounting
 USER root

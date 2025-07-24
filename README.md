@@ -1,63 +1,49 @@
 # n8n on Railway
 
-Este repositorio permite desplegar una instancia de [n8n](https://n8n.io/) en Railway usando Docker.
+This repository allows you to deploy an instance of [n8n](https://n8n.io/) on Railway using Docker.
 
 ## 🚀 Deploy
 
-1. Clona este repositorio en tu cuenta de Railway.
-2. Railway detectará automáticamente el `Dockerfile`.
-3. Crea un volumen persistente en `/home/node/.n8n` para guardar los workflows y credenciales.
-4. Agrega las siguientes variables de entorno en Railway:
+1. Clone this repository to your Railway account.
+2. Railway will automatically detect the `Dockerfile`.
+3. Create a persistent volume at `/home/node/.n8n` to store workflows and credentials.
+4. Add the following environment variables in Railway:
 
 ```env
-# Básicas
-N8N_HOST=0.0.0.0
-N8N_PORT=5678
+# Basic
 N8N_PROTOCOL=https
-N8N_EDITOR_BASE_URL=https://<tu-dominio>.up.railway.app
-
-# Base de datos (opcional pero recomendado)
-DB_TYPE=postgresdb
-DB_POSTGRESDB_HOST=...
-DB_POSTGRESDB_PORT=5432
-DB_POSTGRESDB_DATABASE=...
-DB_POSTGRESDB_USER=...
-DB_POSTGRESDB_PASSWORD=...
-DB_POSTGRESDB_SSL_REJECT_UNAUTHORIZED=false
+N8N_EDITOR_BASE_URL=https://<your-domain>.up.railway.app
 ```
 
-> ⚠️ No todas las variables de entorno son obligatorias si se está usando SQLite temporalmente.  
-> ℹ️ Las variables `NODE_VERSION=22.14.0` y `NODE_ENV=production` ya están definidas en el `Dockerfile`.
+> ⚠️ Not all environment variables are mandatory if using SQLite temporarily.  
+> ℹ️ The variables `NODE_VERSION=22.14.0` and `NODE_ENV=production` are already defined in the `Dockerfile`.
 
-> ✅ Esta configuración ha sido validada como funcional en Railway con la imagen oficial de `n8n`.  
-> Se reactivó el `healthcheckPath` en `railway.toml` con la ruta `/`, ya que fue validado exitosamente en producción sin provocar errores de arranque.  
-> No es necesario definir `startCommand`, ya que el `CMD` está embebido correctamente en la imagen base oficial.
+> ✅ This configuration has been validated as functional on Railway with the official `n8n` image.  
+> The `healthcheckPath` in `railway.toml` was re-enabled with the path `/`, as it was successfully validated in production without causing startup errors.  
 
-> ❗ Nota: No definas `startCommand` en `railway.toml` si estás usando la imagen oficial de Docker de `n8n`.  
-> Esta imagen ya define su propio `CMD` embebido correctamente, y sobreescribirlo causará errores como `Command "start" not found`.
+> ℹ️ Replace `<your-domain>` with your Railway domain.
 
-> ℹ️ Sustituye `<tu-dominio>` y los datos de PostgreSQL con los que te da Railway.
+> ✅ The `healthcheckPath = "/"` was re-enabled in `railway.toml` after successful production tests.
 
-> ✅ Se reactivó el `healthcheckPath = "/"` en `railway.toml` tras pruebas exitosas en producción.
-
-## 🧪 Variables adicionales (opcional)
+## 🧪 Additional Variables (optional)
 
 - `N8N_EXECUTIONS_MODE=queue`
-- `N8N_RUNNERS_ENABLED=...`
+- `N8N_RUNNERS_ENABLED=true`
+- `N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true`
 
-> 🔧 `NODE_ENV=production` ya está definido en el `Dockerfile` para evitar confusiones.
+> 🧱 These variables are already defined in the Dockerfile and do not need to be redefined in Railway.
 
-## 📦 Persistencia
+## 📦 Persistence
 
-Se está usando un volumen de 1 GB montado en `/home/node/.n8n`, lo que garantiza que los datos se conserven entre despliegues.
+A 1 GB volume mounted at `/home/node/.n8n` is used to ensure data is preserved between deployments.
 
-## 📥 Importar Workflows
+## 📥 Import Workflows
 
-Para migrar workflows desde otra instancia de `n8n`:
-1. Exporta los workflows como `.json` desde la UI.
-2. Importa en la nueva instancia también desde la UI de `n8n`.
+To migrate workflows from another `n8n` instance:  
+1. Export the workflows as `.json` files from the UI.  
+2. Import them into the new instance also through the `n8n` UI.
 
-## 🛠 Créditos
+## 🛠 Credits
 
-Basado en la imagen oficial de Docker para `n8n`:  
+Based on the official Docker image for `n8n`:  
 https://hub.docker.com/r/n8nio/n8n
