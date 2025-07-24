@@ -1,24 +1,14 @@
-# Usamos una imagen oficial de n8n con versión específica para mayor estabilidad
+# Usamos imagen oficial n8n estable
 FROM docker.n8n.io/n8nio/n8n:1.102.3
 
-# Configuración general de Node.js
+# Variables necesarias para producción en Railway
 ENV NODE_ENV=production \
-    NODE_VERSION=22.14.0
+    NODE_VERSION=22.14.0 \
+    NODE_FUNCTION_ALLOW_BUILTIN=crypto \
+    N8N_HOST=0.0.0.0 \
+    N8N_PORT=5678
 
-# Permitir el uso del módulo 'crypto' en funciones personalizadas
-ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
-
-# Configuración específica para Railway
-ENV N8N_HOST=0.0.0.0
-ENV N8N_PORT=5678
-
-# Exponer el puerto
 EXPOSE 5678
 
-# Crear directorio y configurar permisos para el volumen
-#USER root
-#RUN mkdir -p /home/node/.n8n && chown -R node:node /home/node/.n8n
-#USER node
-
-# IMPORTANTE: Con volumen, usar el script de inicio completo
-#CMD ["/usr/local/bin/docker-entrypoint.sh", "n8n"]
+# Comando explícito para iniciar n8n
+CMD ["n8n"]
