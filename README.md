@@ -12,10 +12,13 @@ This repository allows you to deploy an instance of [n8n](https://n8n.io/) on Ra
 ```env
 # Basic
 N8N_EDITOR_BASE_URL=https://<your-domain>.up.railway.app
+WEBHOOK_URL=https://<your-domain>.up.railway.app
 N8N_PROTOCOL=https
 PORT=5678
 N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 ```
+
+> 🌐 `WEBHOOK_URL` ensures public webhook URLs do not default to localhost:5678.
 
 
 > ⚠️ Not all environment variables are mandatory if using SQLite temporarily.  
@@ -27,7 +30,6 @@ N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 
 > ℹ️ Replace `<your-domain>` with your Railway domain.
 
-> ✅ The `healthcheckPath = "/"` was re-enabled in `railway.toml` after successful production tests.
 
 ## 🧪 Additional Variables (optional)
 
