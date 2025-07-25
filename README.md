@@ -69,5 +69,8 @@ DB_POSTGRESDB_PASSWORD=your-db-password
 
 ## 🛠 Credits
 
-Based on the official Docker image for `n8n`:  
+- Inspired by [@louisjimenezp](https://github.com/louisjimenezp)'s Render setup:  
+  https://github.com/louisjimenezp/n8n-render-blueprint
+
+- Based on the official Docker image for `n8n`:  
 https://hub.docker.com/r/n8nio/n8n
