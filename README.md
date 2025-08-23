@@ -22,7 +22,7 @@ N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 
 
 > ⚠️ Not all environment variables are mandatory if using SQLite temporarily.  
-> ℹ️ The variables `NODE_VERSION=22.14.0` and `NODE_ENV=production` are already defined in the `Dockerfile`.  
+> ℹ️ The variables `NODE_VERSION=22.15.0` and `NODE_ENV=production` are already defined in the `Dockerfile`.  
 > 🔐 `N8N_ENCRYPTION_KEY` is required if you want to migrate credentials between instances.
 
 > ✅ This configuration has been validated as functional on Railway with the official `n8n` image.  

@@ -1,9 +1,9 @@
 # Use an official n8n image with a specific version for stability
-FROM docker.n8n.io/n8nio/n8n:1.105.4
+FROM docker.n8n.io/n8nio/n8n:1.107.4
 
 # General Node.js configuration
 ENV NODE_ENV=production \
-    NODE_VERSION=22.14.0
+    NODE_VERSION=22.15.0
 
 # Allow crypto module for Zoho SalesIQ Security
 ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
