@@ -1,6 +1,6 @@
 # n8n on Railway
 
-This repository allows you to deploy an instance of [n8n](https://n8n.io/) v1.109.1 on Railway using Docker.
+This repository allows you to deploy an instance of [n8n](https://n8n.io/) v1.111.0 on Railway using Docker.
 
 ## 🚀 Deploy
 
