@@ -6,7 +6,7 @@ ENV NODE_ENV=production \
     NODE_VERSION=22.15.0
 
 # Allow crypto module for Zoho SalesIQ Security
-ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
+ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto,weasyprint
 
 # Recommended additional environment variables
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
