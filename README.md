@@ -1,6 +1,6 @@
 # n8n on Railway
 
-This repository allows you to deploy an instance of [n8n](https://n8n.io/) on Railway using Docker.
+This repository allows you to deploy an instance of [n8n](https://n8n.io/) v1.109.1 on Railway using Docker.
 
 ## 🚀 Deploy
 
@@ -38,6 +38,15 @@ N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 - `N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true`
 
 > 🧱 These variables are already defined in the Dockerfile and do not need to be redefined in Railway.
+
+## 🐍 Python Support
+
+This n8n instance includes support for Python code execution through Pyodide. The following variables are configured in the Dockerfile for Python compatibility:
+
+- `NODE_FUNCTION_ALLOW_BUILTIN=crypto` - Enables crypto module for security features
+- `N8N_RUNNERS_ENABLED=true` - Enables the runners system for Python execution
+
+> ⚠️ Python execution is in beta and may have limitations. Ensure proper permissions for the `node_modules/pyodide` directory.
 
 ## 📦 Persistence
 
