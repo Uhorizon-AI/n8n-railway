@@ -5,15 +5,15 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 ## 📋 Configuración Actual
 
 ### Versión de n8n
-- **Versión actual:** 1.113.3
-- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:1.113.3`
-- **Fecha de actualización:** Diciembre 2024
+- **Versión actual:** 1.119.2
+- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:1.119.2`
+- **Fecha de actualización:** Noviembre 2025
 
 ### Configuración del Dockerfile
 
 ```dockerfile
 # Imagen base
-FROM docker.n8n.io/n8nio/n8n:1.113.3
+FROM docker.n8n.io/n8nio/n8n:1.119.2
 
 # Configuración de Node.js
 ENV NODE_ENV=production
@@ -50,13 +50,13 @@ docker pull docker.n8n.io/n8nio/n8n:1.109.1
 Cambiar la línea 2 del Dockerfile:
 ```dockerfile
 # De:
-FROM docker.n8n.io/n8nio/n8n:1.111.0
-# A:
 FROM docker.n8n.io/n8nio/n8n:1.113.3
+# A:
+FROM docker.n8n.io/n8nio/n8n:1.119.2
 ```
 
 ### 3. Verificar Compatibilidad
-- ✅ **Node.js 22.15.0** - Compatible con n8n 1.113.3
+- ✅ **Node.js 22.15.0** - Compatible con n8n 1.119.2
 - ✅ **Python/Pyodide** - Soporte incluido en la imagen
 - ✅ **Variables de entorno** - No requieren cambios
 
@@ -111,6 +111,7 @@ FROM docker.n8n.io/n8nio/n8n:1.113.3
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
+| Nov 2025 | 1.119.2 | Actualización desde 1.113.3 a 1.119.2 |
 | Dic 2024 | 1.113.3 | Actualización desde 1.111.0 a 1.113.3 |
 | Dic 2024 | 1.111.0 | Actualización desde 1.107.4, agregada documentación Python |
 | - | 1.107.4 | Versión inicial |
