@@ -5,15 +5,15 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 ## 📋 Configuración Actual
 
 ### Versión de n8n
-- **Versión actual:** 2.4.7
-- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.4.7`
+- **Versión actual:** 2.6.4
+- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.6.4`
 - **Fecha de actualización:** Febrero 2026
 
 ### Configuración del Dockerfile
 
 ```dockerfile
 # Imagen base
-FROM docker.n8n.io/n8nio/n8n:2.4.7
+FROM docker.n8n.io/n8nio/n8n:2.6.4
 
 # Configuración de Node.js
 ENV NODE_ENV=production
@@ -50,13 +50,13 @@ docker pull docker.n8n.io/n8nio/n8n:1.109.1
 Cambiar la línea 2 del Dockerfile:
 ```dockerfile
 # De:
-FROM docker.n8n.io/n8nio/n8n:1.122.5
+FROM docker.n8n.io/n8nio/n8n:<version-anterior>
 # A:
-FROM docker.n8n.io/n8nio/n8n:2.4.7
+FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 ```
 
 ### 3. Verificar Compatibilidad
-- ✅ **Node.js 22.15.0** - Compatible con n8n 2.4.7
+- ✅ **Node.js 22.15.0** - Compatible con n8n 2.6.4
 - ✅ **Python/Pyodide** - Soporte incluido en la imagen
 - ✅ **Variables de entorno** - No requieren cambios
 
@@ -154,6 +154,7 @@ FROM docker.n8n.io/n8nio/n8n:2.4.7
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
+| Feb 2026 | 2.6.4 | Actualización 2.4.7 → 2.6.4 (minor). |
 | Feb 2026 | 2.4.7 | Actualización 1.122.5 → 2.4.7 (major). Zendesk Trigger: webhook signature verification. Ver sección Producción si vienes de 1.x. |
 | Dic 2025 | 1.122.5 | Actualización desde 1.119.2 a 1.122.5 |
 | Nov 2025 | 1.119.2 | Actualización desde 1.113.3 a 1.119.2 |
