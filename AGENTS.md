@@ -5,15 +5,15 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 ## 📋 Configuración Actual
 
 ### Versión de n8n
-- **Versión actual:** 1.122.5
-- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:1.122.5`
-- **Fecha de actualización:** Diciembre 2025
+- **Versión actual:** 2.4.7
+- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.4.7`
+- **Fecha de actualización:** Febrero 2026
 
 ### Configuración del Dockerfile
 
 ```dockerfile
 # Imagen base
-FROM docker.n8n.io/n8nio/n8n:1.122.5
+FROM docker.n8n.io/n8nio/n8n:2.4.7
 
 # Configuración de Node.js
 ENV NODE_ENV=production
@@ -50,13 +50,13 @@ docker pull docker.n8n.io/n8nio/n8n:1.109.1
 Cambiar la línea 2 del Dockerfile:
 ```dockerfile
 # De:
-FROM docker.n8n.io/n8nio/n8n:1.119.2
-# A:
 FROM docker.n8n.io/n8nio/n8n:1.122.5
+# A:
+FROM docker.n8n.io/n8nio/n8n:2.4.7
 ```
 
 ### 3. Verificar Compatibilidad
-- ✅ **Node.js 22.15.0** - Compatible con n8n 1.122.5
+- ✅ **Node.js 22.15.0** - Compatible con n8n 2.4.7
 - ✅ **Python/Pyodide** - Soporte incluido en la imagen
 - ✅ **Variables de entorno** - No requieren cambios
 
@@ -93,6 +93,49 @@ FROM docker.n8n.io/n8nio/n8n:1.122.5
 - Usuario: root (requerido para Railway)
 - Volumen persistente: `/home/node/.n8n`
 
+## 🚀 Producción: actualización 1.x → 2.x (2.4.7)
+
+**Importante:** Pasar de 1.122.5 a 2.4.7 es un salto de **major** (1.x → 2.x). En producción hay que hacer pasos adicionales.
+
+### Pasos directos (Railway + Postgres)
+1. **Backup Postgres (Railway):**
+   - En Railway, abre el servicio de **Postgres** de n8n.
+   - Crea **snapshot/backup** desde el panel.
+   - Confirma que el snapshot quedó listo antes de continuar.
+2. **Backup lógico (opcional pero recomendado):**
+   - Exporta todos los workflows (JSON) desde n8n.
+3. **Migration Report (recomendado):**
+   - En la instancia actual 1.x: Settings > Migration Report.
+   - Anota issues **Critical/Medium** para resolver tras el upgrade.
+4. **Revisión de breaking changes v2.0:**
+   - **Start node eliminado:** Cambiar por Manual Trigger / Execute Workflow Trigger o eliminar.
+   - **Publish/Save:** Revisar workflows que deben publicarse.
+   - **Nodos eliminados:** Spontit, crowd.dev, Kitemaker, Automizy.
+5. **Actualizar imagen en repo (Dockerfile):**
+   - Cambiar a `FROM docker.n8n.io/n8nio/n8n:2.4.7`.
+   - Mantener `NODE_VERSION=22.15.0`, `N8N_RUNNERS_ENABLED=true`, `NODE_FUNCTION_ALLOW_BUILTIN=crypto`.
+6. **Verificar variables críticas en Railway:**
+   - **No cambiar** `N8N_ENCRYPTION_KEY`.
+   - Confirmar `N8N_EXECUTIONS_MODE=queue` y `N8N_RUNNERS_ENABLED=true`.
+7. **Deploy en Railway:**
+   - Haz push a la rama desplegada (normalmente `main`).
+   - Espera a que el build termine y el contenedor arranque.
+8. **Primer arranque y migraciones:**
+   - Deja que las migraciones de BD finalicen antes de usar la UI.
+   - Revisa logs si el arranque tarda más de lo habitual.
+9. **Validación post-deploy:**
+   - Healthcheck `/` responde.
+   - Login correcto y credenciales legibles.
+   - Probar workflows críticos y webhooks públicos.
+   - En Settings > Migration Report, resolver primero **Critical**, luego **Medium**.
+10. **Zendesk Trigger (2.4.7):**
+   - Si usas el nodo Zendesk Trigger, configurar verificación de firma de webhook tras el deploy.
+
+### Referencias
+- [n8n 2.0 Breaking Changes](https://docs.n8n.io/2-0-breaking-changes/)
+- [n8n Migration Tool v2](https://docs.n8n.io/migration-tool-v2/)
+- [n8n 2.4.7 Release](https://github.com/n8n-io/n8n/releases) (Zendesk webhook signature)
+
 ## 🔍 Verificaciones Post-Actualización
 
 1. **Health Check:** Verificar que Railway detecte el servicio correctamente
@@ -111,6 +154,7 @@ FROM docker.n8n.io/n8nio/n8n:1.122.5
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
+| Feb 2026 | 2.4.7 | Actualización 1.122.5 → 2.4.7 (major). Zendesk Trigger: webhook signature verification. Ver sección Producción si vienes de 1.x. |
 | Dic 2025 | 1.122.5 | Actualización desde 1.119.2 a 1.122.5 |
 | Nov 2025 | 1.119.2 | Actualización desde 1.113.3 a 1.119.2 |
 | Dic 2024 | 1.113.3 | Actualización desde 1.111.0 a 1.113.3 |
