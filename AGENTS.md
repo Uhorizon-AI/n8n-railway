@@ -25,7 +25,6 @@ ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
 # Variables de n8n recomendadas
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
 ENV N8N_EXECUTIONS_MODE=queue
-ENV N8N_RUNNERS_ENABLED=true
 
 # Puerto
 EXPOSE 5678
@@ -69,7 +68,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 
 ### Variables Importantes
 - `NODE_FUNCTION_ALLOW_BUILTIN=crypto` - Habilita módulo crypto para seguridad
-- `N8N_RUNNERS_ENABLED=true` - Habilita sistema de runners para Python
+- ~~`N8N_RUNNERS_ENABLED=true`~~ - **DEPRECATED** (Feb 2026): Esta variable ya no es necesaria y ha sido eliminada
 
 ### Compatibilidad
 - **Pyodide:** Incluido en la imagen oficial de n8n
@@ -86,7 +85,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 ### Variables Críticas
 - `N8N_ENCRYPTION_KEY` - Requerida para migración de credenciales
 - `NODE_FUNCTION_ALLOW_BUILTIN=crypto` - Específica para Zoho SalesIQ
-- `N8N_RUNNERS_ENABLED=true` - Necesaria para Python
+- ~~`N8N_RUNNERS_ENABLED=true`~~ - **DEPRECATED** (ya no es necesaria)
 
 ### Railway Específico
 - Puerto: 5678 (no cambiar)
@@ -113,10 +112,10 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
    - **Nodos eliminados:** Spontit, crowd.dev, Kitemaker, Automizy.
 5. **Actualizar imagen en repo (Dockerfile):**
    - Cambiar a `FROM docker.n8n.io/n8nio/n8n:2.4.7`.
-   - Mantener `NODE_VERSION=22.15.0`, `N8N_RUNNERS_ENABLED=true`, `NODE_FUNCTION_ALLOW_BUILTIN=crypto`.
+   - Mantener `NODE_VERSION=22.15.0`, `NODE_FUNCTION_ALLOW_BUILTIN=crypto`.
 6. **Verificar variables críticas en Railway:**
    - **No cambiar** `N8N_ENCRYPTION_KEY`.
-   - Confirmar `N8N_EXECUTIONS_MODE=queue` y `N8N_RUNNERS_ENABLED=true`.
+   - Confirmar `N8N_EXECUTIONS_MODE=queue`.
 7. **Deploy en Railway:**
    - Haz push a la rama desplegada (normalmente `main`).
    - Espera a que el build termine y el contenedor arranque.
@@ -154,7 +153,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
-| Feb 2026 | 2.6.4 | Actualización 2.4.7 → 2.6.4 (minor). |
+| Feb 2026 | 2.6.4 | Actualización 2.4.7 → 2.6.4 (minor). Eliminada variable deprecated N8N_RUNNERS_ENABLED. |
 | Feb 2026 | 2.4.7 | Actualización 1.122.5 → 2.4.7 (major). Zendesk Trigger: webhook signature verification. Ver sección Producción si vienes de 1.x. |
 | Dic 2025 | 1.122.5 | Actualización desde 1.119.2 a 1.122.5 |
 | Nov 2025 | 1.119.2 | Actualización desde 1.113.3 a 1.119.2 |
