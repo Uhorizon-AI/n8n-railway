@@ -10,7 +10,8 @@ ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
 
 # Recommended additional environment variables
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
-    N8N_EXECUTIONS_MODE=queue
+    N8N_EXECUTIONS_MODE=queue \
+    N8N_TRUST_PROXY=true
 
 # Railway-specific configuration
 #ENV N8N_HOST=0.0.0.0
