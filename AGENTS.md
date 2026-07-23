@@ -5,15 +5,15 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 ## 📋 Configuración Actual
 
 ### Versión de n8n
-- **Versión actual:** 2.6.4
-- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.6.4`
-- **Fecha de actualización:** Febrero 2026
+- **Versión actual:** 2.31.5
+- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.31.5`
+- **Fecha de actualización:** Julio 2026
 
 ### Configuración del Dockerfile
 
 ```dockerfile
 # Imagen base
-FROM docker.n8n.io/n8nio/n8n:2.6.4
+FROM docker.n8n.io/n8nio/n8n:2.31.5
 
 # Configuración de Node.js
 ENV NODE_ENV=production
@@ -58,7 +58,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 ```
 
 ### 3. Verificar Compatibilidad
-- ✅ **Node.js 22.15.0** - Compatible con n8n 2.6.4
+- ✅ **Node.js 22.15.0** - Compatible con n8n 2.31.5
 - ✅ **Python/Pyodide** - Soporte incluido en la imagen
 - ✅ **Variables de entorno** - No requieren cambios
 
@@ -158,6 +158,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
+| Jul 2026 | 2.31.5 | Actualización 2.6.4 → 2.31.5 (minor, última estable). Sin cambios de variables de entorno. |
 | Feb 2026 | 2.6.4 | Actualización 2.4.7 → 2.6.4 (minor). Eliminada variable deprecated N8N_RUNNERS_ENABLED. Agregada N8N_TRUST_PROXY=true para Railway. |
 | Feb 2026 | 2.4.7 | Actualización 1.122.5 → 2.4.7 (major). Zendesk Trigger: webhook signature verification. Ver sección Producción si vienes de 1.x. |
 | Dic 2025 | 1.122.5 | Actualización desde 1.119.2 a 1.122.5 |
