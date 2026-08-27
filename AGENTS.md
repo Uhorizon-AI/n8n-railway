@@ -5,15 +5,15 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 ## 📋 Configuración Actual
 
 ### Versión de n8n
-- **Versión actual:** 2.31.5
-- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.31.5`
-- **Fecha de actualización:** Julio 2026
+- **Versión actual:** 2.36.7
+- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.36.7`
+- **Fecha de actualización:** Agosto 2026
 
 ### Configuración del Dockerfile
 
 ```dockerfile
 # Imagen base
-FROM docker.n8n.io/n8nio/n8n:2.31.5
+FROM docker.n8n.io/n8nio/n8n:2.36.7
 
 # Configuración de Node.js
 ENV NODE_ENV=production
@@ -45,7 +45,7 @@ Antes de actualizar, verificar la versión más reciente estable:
 docker pull docker.n8n.io/n8nio/n8n:latest
 
 # Verificar versión específica
-docker pull docker.n8n.io/n8nio/n8n:1.109.1
+docker pull docker.n8n.io/n8nio/n8n:<version>
 ```
 
 ### 2. Actualizar Dockerfile
@@ -58,7 +58,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 ```
 
 ### 3. Verificar Compatibilidad
-- ✅ **Node.js 22.15.0** - Compatible con n8n 2.31.5
+- ✅ **Node.js 22.15.0** - Configurado para n8n 2.36.7
 - ✅ **Python/Pyodide** - Soporte incluido en la imagen
 - ✅ **Variables de entorno** - No requieren cambios
 
@@ -158,6 +158,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
+| Ago 2026 | 2.36.7 | Actualización 2.31.5 → 2.36.7 (minor, última estable). |
 | Jul 2026 | 2.31.5 | Actualización 2.6.4 → 2.31.5 (minor, última estable). Sin cambios de variables de entorno. |
 | Feb 2026 | 2.6.4 | Actualización 2.4.7 → 2.6.4 (minor). Eliminada variable deprecated N8N_RUNNERS_ENABLED. Agregada N8N_TRUST_PROXY=true para Railway. |
 | Feb 2026 | 2.4.7 | Actualización 1.122.5 → 2.4.7 (major). Zendesk Trigger: webhook signature verification. Ver sección Producción si vienes de 1.x. |

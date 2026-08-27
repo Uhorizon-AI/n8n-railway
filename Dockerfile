@@ -1,5 +1,5 @@
 # Use an official n8n image with a specific version for stability
-FROM docker.n8n.io/n8nio/n8n:2.31.5
+FROM docker.n8n.io/n8nio/n8n:2.36.7
 
 # General Node.js configuration
 ENV NODE_ENV=production \
