@@ -28,7 +28,7 @@ ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
 ENV N8N_EXECUTIONS_MODE=queue
 
 # Railway-specific configuration
-ENV N8N_TRUST_PROXY=true
+ENV N8N_PROXY_HOPS=1
 
 # Puerto
 EXPOSE 5678
@@ -89,14 +89,15 @@ FROM n8nio/n8n:<version-objetivo>
 ### Variables Críticas
 - `N8N_ENCRYPTION_KEY` - Requerida para migración de credenciales
 - `NODE_FUNCTION_ALLOW_BUILTIN=crypto` - Específica para Zoho SalesIQ
-- `N8N_TRUST_PROXY=true` - Requerida para Railway/proxy reverso (rate limiting e IPs correctas)
+- `N8N_PROXY_HOPS=1` - Requerida para Railway (un proxy reverso). Sin ella, Express deja `trust proxy` en false y `express-rate-limit` lanza `ERR_ERL_UNEXPECTED_X_FORWARDED_FOR`
+- ~~`N8N_TRUST_PROXY=true`~~ - **No la lee n8n.** El código solo hace `app.set('trust proxy', hops)` si `N8N_PROXY_HOPS` es mayor que 0
 - ~~`N8N_RUNNERS_ENABLED=true`~~ - **DEPRECATED** (ya no es necesaria)
 
 ### Railway Específico
 - Puerto: 5678 (no cambiar)
 - Usuario: root (requerido para Railway)
 - Volumen persistente: `/home/node/.n8n`
-- `N8N_TRUST_PROXY=true` - **Crítico**: Requerido para Railway (proxy reverso). Permite rate limiting correcto y lectura de IPs reales desde headers X-Forwarded-For
+- `N8N_PROXY_HOPS=1` - **Crítico**: Railway añade un salto (`X-Forwarded-For`). Con `0`, el rate limit no identifica al cliente y cada petición detrás del proxy registra `ERR_ERL_UNEXPECTED_X_FORWARDED_FOR`. El dominio `n8n.uhorizon.ai` resuelve directo a Railway (sin proxy de Cloudflare), así que el salto es 1, no 2
 
 ## 🚀 Producción: actualización 1.x → 2.x (2.4.7)
 
@@ -159,6 +160,7 @@ FROM n8nio/n8n:<version-objetivo>
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
+| Oct 2026 | 2.41.6 | `N8N_TRUST_PROXY` no activa `trust proxy`. Sustituida por `N8N_PROXY_HOPS=1` para el edge de Railway. Corrige `ERR_ERL_UNEXPECTED_X_FORWARDED_FOR` en producción. |
 | Oct 2026 | 2.41.6 | Actualización 2.36.7 → 2.41.6 (minor, estable del 2026-10-02). Node de la imagen: 26.7.0. Sin entrada nueva en `BREAKING-CHANGES.md` (el último corte 2.x sigue siendo 2.0.0). Tras el deploy, probar un nodo Code: 2.37.x tuvo un fallo de task runner ya corregido en esta estable. |
 | Ago 2026 | 2.36.7 | Actualización 2.31.5 → 2.36.7 (minor, última estable). |
 | Jul 2026 | 2.31.5 | Actualización 2.6.4 → 2.31.5 (minor, última estable). Sin cambios de variables de entorno. |

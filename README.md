@@ -38,6 +38,8 @@ N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 
 > 🧱 These variables are already defined in the Dockerfile and do not need to be redefined in Railway.
 
+The Dockerfile also sets `N8N_PROXY_HOPS=1`. Railway is one reverse proxy. n8n ignores `N8N_TRUST_PROXY`; without `N8N_PROXY_HOPS`, requests that carry `X-Forwarded-For` fail rate limiting with `ERR_ERL_UNEXPECTED_X_FORWARDED_FOR`.
+
 ## 🐍 Python Support
 
 This n8n instance includes support for Python code execution through Pyodide. The following variables are configured in the Dockerfile for Python compatibility:

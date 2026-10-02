@@ -15,8 +15,11 @@ ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
 ENV N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true \
     N8N_EXECUTIONS_MODE=queue
 
-# Railway-specific configuration
-ENV N8N_TRUST_PROXY=true
+# Railway's edge is one reverse proxy and sends X-Forwarded-For.
+# n8n trusts that header only when N8N_PROXY_HOPS > 0.
+# N8N_TRUST_PROXY is not read; leaving hops at 0 logs
+# ERR_ERL_UNEXPECTED_X_FORWARDED_FOR and breaks rate limiting.
+ENV N8N_PROXY_HOPS=1
 #ENV N8N_HOST=0.0.0.0
 #ENV N8N_PORT=5678
 
