@@ -1,6 +1,6 @@
 # n8n on Railway
 
-This repository allows you to deploy an instance of [n8n](https://n8n.io/) v2.36.7 on Railway using Docker.
+This repository allows you to deploy an instance of [n8n](https://n8n.io/) v2.41.6 on Railway using Docker.
 
 ## 🚀 Deploy
 
@@ -22,7 +22,7 @@ N8N_ENCRYPTION_KEY=<your-static-encryption-key>
 
 
 > ⚠️ Not all environment variables are mandatory if using SQLite temporarily.  
-> ℹ️ The variables `NODE_VERSION=22.15.0` and `NODE_ENV=production` are already defined in the `Dockerfile`.  
+> ℹ️ The variables `NODE_VERSION=26.7.0` and `NODE_ENV=production` are already defined in the `Dockerfile`. The image brings its own Node 26.7.0; `NODE_VERSION` records that version and does not install another one.
 > 🔐 `N8N_ENCRYPTION_KEY` is required if you want to migrate credentials between instances.
 
 > ✅ This configuration has been validated as functional on Railway with the official `n8n` image.  

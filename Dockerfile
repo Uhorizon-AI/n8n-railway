@@ -1,9 +1,11 @@
-# Use an official n8n image with a specific version for stability
-FROM docker.n8n.io/n8nio/n8n:2.36.7
+# Use an official n8n image with a specific version for stability.
+# 2.41.6 is the stable release of 2026-10-02. The image ships Node 26.7.0;
+# NODE_VERSION records that, it does not install another Node.
+FROM docker.n8n.io/n8nio/n8n:2.41.6
 
 # General Node.js configuration
 ENV NODE_ENV=production \
-    NODE_VERSION=22.15.0
+    NODE_VERSION=26.7.0
 
 # Allow crypto module for Zoho SalesIQ Security
 ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto

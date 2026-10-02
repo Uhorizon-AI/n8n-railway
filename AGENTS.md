@@ -5,19 +5,20 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 ## 📋 Configuración Actual
 
 ### Versión de n8n
-- **Versión actual:** 2.36.7
-- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.36.7`
-- **Fecha de actualización:** Agosto 2026
+- **Versión actual:** 2.41.6 (estable del 2026-10-02)
+- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.41.6`
+- **Node de la imagen:** 26.7.0
+- **Fecha de actualización:** Octubre 2026
 
 ### Configuración del Dockerfile
 
 ```dockerfile
 # Imagen base
-FROM docker.n8n.io/n8nio/n8n:2.36.7
+FROM docker.n8n.io/n8nio/n8n:2.41.6
 
 # Configuración de Node.js
 ENV NODE_ENV=production
-ENV NODE_VERSION=22.15.0
+ENV NODE_VERSION=26.7.0
 
 # Configuración para Python/Zoho SalesIQ Security
 ENV NODE_FUNCTION_ALLOW_BUILTIN=crypto
@@ -58,7 +59,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 ```
 
 ### 3. Verificar Compatibilidad
-- ✅ **Node.js 22.15.0** - Configurado para n8n 2.36.7
+- ✅ **Node.js 26.7.0** - Viene en la imagen oficial de n8n 2.41.6. `NODE_VERSION` solo lo registra; no cambia el binario.
 - ✅ **Python/Pyodide** - Soporte incluido en la imagen
 - ✅ **Variables de entorno** - No requieren cambios
 
@@ -158,6 +159,7 @@ FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
 
 | Fecha | Versión | Cambios |
 |-------|---------|---------|
+| Oct 2026 | 2.41.6 | Actualización 2.36.7 → 2.41.6 (minor, estable del 2026-10-02). Node de la imagen: 26.7.0. Sin entrada nueva en `BREAKING-CHANGES.md` (el último corte 2.x sigue siendo 2.0.0). Tras el deploy, probar un nodo Code: 2.37.x tuvo un fallo de task runner ya corregido en esta estable. |
 | Ago 2026 | 2.36.7 | Actualización 2.31.5 → 2.36.7 (minor, última estable). |
 | Jul 2026 | 2.31.5 | Actualización 2.6.4 → 2.31.5 (minor, última estable). Sin cambios de variables de entorno. |
 | Feb 2026 | 2.6.4 | Actualización 2.4.7 → 2.6.4 (minor). Eliminada variable deprecated N8N_RUNNERS_ENABLED. Agregada N8N_TRUST_PROXY=true para Railway. |
