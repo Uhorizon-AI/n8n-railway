@@ -1,6 +1,6 @@
 # n8n on Railway
 
-This repository allows you to deploy an instance of [n8n](https://n8n.io/) v2.41.6 on Railway using Docker.
+This repository allows you to deploy an instance of [n8n](https://n8n.io/) v2.41.6 on Railway using Docker. The image is `n8nio/n8n:2.41.6` from Docker Hub. `docker.n8n.io` is not used: anonymous manifest requests there return 429.
 
 ## 🚀 Deploy
 

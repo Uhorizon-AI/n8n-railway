@@ -6,7 +6,7 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 
 ### Versión de n8n
 - **Versión actual:** 2.41.6 (estable del 2026-10-02)
-- **Imagen Docker:** `docker.n8n.io/n8nio/n8n:2.41.6`
+- **Imagen Docker:** `n8nio/n8n:2.41.6` (Docker Hub; `docker.n8n.io` responde 429)
 - **Node de la imagen:** 26.7.0
 - **Fecha de actualización:** Octubre 2026
 
@@ -14,7 +14,7 @@ Este archivo contiene información específica para agentes de IA sobre la confi
 
 ```dockerfile
 # Imagen base
-FROM docker.n8n.io/n8nio/n8n:2.41.6
+FROM n8nio/n8n:2.41.6
 
 # Configuración de Node.js
 ENV NODE_ENV=production
@@ -43,19 +43,19 @@ USER root
 Antes de actualizar, verificar la versión más reciente estable:
 ```bash
 # Verificar versión latest
-docker pull docker.n8n.io/n8nio/n8n:latest
+docker pull n8nio/n8n:latest
 
 # Verificar versión específica
-docker pull docker.n8n.io/n8nio/n8n:<version>
+docker pull n8nio/n8n:<version>
 ```
 
 ### 2. Actualizar Dockerfile
 Cambiar la línea 2 del Dockerfile:
 ```dockerfile
 # De:
-FROM docker.n8n.io/n8nio/n8n:<version-anterior>
+FROM n8nio/n8n:<version-anterior>
 # A:
-FROM docker.n8n.io/n8nio/n8n:<version-objetivo>
+FROM n8nio/n8n:<version-objetivo>
 ```
 
 ### 3. Verificar Compatibilidad

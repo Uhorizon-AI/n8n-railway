@@ -1,7 +1,8 @@
 # Use an official n8n image with a specific version for stability.
-# 2.41.6 is the stable release of 2026-10-02. The image ships Node 26.7.0;
-# NODE_VERSION records that, it does not install another Node.
-FROM docker.n8n.io/n8nio/n8n:2.41.6
+# 2.41.6 is the stable release of 2026-10-02, pulled from Docker Hub.
+# docker.n8n.io rate-limits anonymous manifest requests (429).
+# The image ships Node 26.7.0; NODE_VERSION records that, it does not install another Node.
+FROM n8nio/n8n:2.41.6
 
 # General Node.js configuration
 ENV NODE_ENV=production \
